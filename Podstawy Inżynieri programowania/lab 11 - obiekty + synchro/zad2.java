@@ -14,7 +14,7 @@ public class zad2 {
             int xd = placeholder;
             while (xd < 5) {
                 if (xd != placeholder) {
-                    System.out.println("val in cahnge maker: " + placeholder);
+                    System.out.println("val in check method: " + placeholder);
                     xd = placeholder;
                 }
             }
@@ -26,7 +26,7 @@ public class zad2 {
         public void run() {
             int heh = placeholder;
             while (placeholder < 5) {
-                System.out.println("val in cahnge maker: " + placeholder);
+                System.out.println("val in cahnge method: " + placeholder);
                 placeholder = ++heh;
                 try {
                     Thread.sleep(100);
