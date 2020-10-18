@@ -5,3 +5,17 @@
 body {
     background-color: bisque;
 }
+
+h2 {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+#diagram {
+    width: 1000px;
+}
