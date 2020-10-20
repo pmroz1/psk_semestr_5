@@ -3,8 +3,11 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-public class zad1c {
 
+//ConcurrentSkipListSet and ConcurrentSkipListMap are useful when you need a sorted container that will be accessed 
+//by multiple threads. These are essentially the equivalents of TreeMap and TreeSet for concurrent code.
+
+public class zad1c {
     public static void main(String[] args) {
         Set<String> mySet;
         Set<String> FavFood = new ConcurrentSkipListSet<String>();
@@ -37,7 +40,6 @@ public class zad1c {
                     }
                     System.out.println("Zakończono: " + Thread.currentThread().getName());
                 }
-
             }
         };
         Thread th;

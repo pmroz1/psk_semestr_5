@@ -15,8 +15,19 @@ public class zad1d {
 
         mySet = Collections.synchronizedSet(FavFood);
 
+        Iterator<String> iterator = mySet.iterator();
+
+        while (iterator.hasNext()) {
+            mySet.remove("Firstborns");
+            System.out.println("-> " + iterator.next());
+        }
+
         HandleThread(mySet, true);
         HandleThread(mySet, false);
+
+        while (iterator.hasNext()) {
+            System.out.println("-> " + iterator.next());
+        }
     }
 
     public static void HandleThread(Set<String> listener, boolean isThatFirstSet) {
@@ -31,8 +42,9 @@ public class zad1d {
                     }
                     System.out.println("Zakończono: " + Thread.currentThread().getName());
                 } else {
+                    listener.add("Spajsy indian food");
                     while (iterator.hasNext()) {
-                        listener.add("Spajsy jalapanienino burgers");
+
                         System.out.println("-> " + iterator.next());
                     }
                     System.out.println("Zakończono: " + Thread.currentThread().getName());

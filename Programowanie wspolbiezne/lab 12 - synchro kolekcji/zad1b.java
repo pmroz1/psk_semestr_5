@@ -1,11 +1,14 @@
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+//As its name implies, it allows us to create synchronized Sets with minimal fuss.
 public class zad1b {
     public static void main(String[] args) {
-        Set<String> mySet = new HashSet<String>();
-        Thread th1 = new Thread(new Zadanko(mySet));
-        Thread th2 = new Thread(new Zadanko(mySet));
+        Set<String> mySet = Collections.synchronizedSet(new HashSet<String>());
+        ;
+        Thread th1 = new Thread(new Zadanko((mySet), true));
+        Thread th2 = new Thread(new Zadanko((mySet), false));
 
         th1.start();
         th2.start();
@@ -27,22 +30,35 @@ public class zad1b {
 
 class Zadanko implements Runnable { // pozwala na korzystanie z wątków
     private Set<String> insideSet; // nasza kolejkcja xd
+    private boolean first;
 
-    public Zadanko(Set<String> val) {
+    public Zadanko(Set<String> val, boolean isFirst) {
+        this.first = isFirst;
         this.insideSet = val;
     }
 
     @Override
     public void run() {
         System.out.println("Metoda run() cklasy zadanko" + Thread.currentThread().getName());
-        String str = Thread.currentThread().getName();
+        // String str = Thread.currentThread().getName();
         int i;
-        for (i = 0; i < 5; i++) {
-            insideSet.add(str + " itr nr[" + i + "]");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        if (first) {
+            for (i = 0; i < 5; i++) {
+                insideSet.add(String.valueOf(i * 100));
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            for (i = 0; i < 5; i++) {
+                insideSet.add(String.valueOf(i * 200));
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
