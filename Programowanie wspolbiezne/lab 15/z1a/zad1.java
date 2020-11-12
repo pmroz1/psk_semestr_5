@@ -1,4 +1,4 @@
-package z1;
+package z1a;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -26,9 +26,6 @@ public class zad1 {
 }
 
 class Task extends RecursiveTask {
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 	final int size;
 	List<File> cats;
