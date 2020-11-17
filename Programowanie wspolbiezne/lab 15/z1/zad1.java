@@ -1,4 +1,3 @@
-package z1;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,6 +6,8 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class zad1 {
+
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		String path = System.getProperty("user.dir");
 		File cat = new File(path);
@@ -18,9 +19,9 @@ public class zad1 {
 		}
 
 		ForkJoinPool forkPool = new ForkJoinPool();
-		Long size = (Long) forkPool.invoke(new Task(listOfCats, 0));
+		forkPool.invoke(new Task(listOfCats, 0));
 
-		System.out.println("MAX = " + size);
+		System.out.println("MAX = ");
 		forkPool = new ForkJoinPool();
 	}
 }
